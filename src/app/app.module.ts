@@ -1,3 +1,4 @@
+import { ClusterService } from './cluster.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -27,7 +28,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
   ],
   exports: [],
-  providers: [],
+  providers: [
+    ClusterService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

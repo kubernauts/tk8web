@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ClusterComponent } from '../cluster/cluster.component';
 import { ClusterService } from '../cluster.service';
 import { Cluster, Instance, Access, ClusterForm } from '../cluster';
@@ -8,10 +8,9 @@ import { Cluster, Instance, Access, ClusterForm } from '../cluster';
   templateUrl: './cluster-create.component.html',
   styleUrls: ['./cluster-create.component.less']
 })
+@Inject (ClusterService)
 export class ClusterCreateComponent extends ClusterComponent  implements OnInit {
-  constructor(clusterService: ClusterService) {
-    super(clusterService);
-  }
+
   get diagnostic() { return  [JSON.stringify(this.model), JSON.stringify(this.networkSetting)] ; }
   form = new ClusterForm(false);
   networkSetting = false;
@@ -21,9 +20,9 @@ export class ClusterCreateComponent extends ClusterComponent  implements OnInit 
     'default',
     'default',
     'default',
-    new Instance(2, 'default'),
-    new Instance(3, 'default'),
-    new Instance(2, 'default'),
+    new Instance('2', 'default'),
+    new Instance('3', 'default'),
+    new Instance('2', 'default'),
     new Access('', ''),
   );
   submitted = false;

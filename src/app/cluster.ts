@@ -19,7 +19,7 @@ export class Cluster {
 
 export class Instance {
   constructor(
-  public count: number,
+  public count: string,
   public size: string,
   ) {}
 }
