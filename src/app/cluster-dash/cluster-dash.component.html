@@ -1,17 +1,30 @@
 <div class="container-fluid">
   <div class="row">
-    <div  class="col-md-2 card m-1 p-0" *ngFor="let cluster of getCluster()">
-      <h5 class="card-header text-center">
-        <i class="fas fa-server"></i> {{cluster.name}}
+    <div  class="col-md-5 col-sm-12 col-lg-4 card m-0 p-0" *ngFor="let cluster of getCluster()">
+      <h5 class="card-header text-center align-middle">
+          <img class="rounded img-circle img-responsive" width="25px" height="25px" [src]="'../../assets/k8s.png'"> {{cluster.name}}
       </h5>
       <div class="card-body">
         <div class="card-title">Hosted on {{cluster.provisioner}}</div>
-        <div class="card-text">installed with RKE</div>
+        <div class="card-text">installed with {{cluster.installer}}</div>
+        <div class="card-text">total Nodes {{cluster.node.count}}</div>
       </div>
       <ul class="list-group list-group-flush">
-          <li class="list-group-item"><span class="row"><span class="col-md-8">Master:</span> <span class="col-md-4">1</span></span></li>
-          <li class="list-group-item"><span class="row"><span class="col-md-8">ETCD:</span> <span class="col-md-4">1</span></span></li>
-          <li class="list-group-item"><span class="row"><span class="col-md-8">Node:</span> <span class="col-md-4">1</span></span></li>
+          <li class="list-group-item">
+            <span class="row">
+                <img class="rounded img-circle img-responsive" width="25px" height="25px" [src]="'../assets/master-128.png'"> Master: {{cluster.master.count}}
+            </span>
+          </li>
+          <li class="list-group-item">
+            <span class="row">
+                <img class="rounded img-circle img-responsive" width="25px" height="25px" [src]="'../assets/etcd-128.png'"> ETCD: {{cluster.etcd.count}}
+            </span>
+          </li>
+          <li class="list-group-item">
+            <span class="row">
+                <img class="rounded img-circle img-responsive" width="25px" height="25px" [src]="'../assets/node-128.png'"> Worker: {{cluster.node.count}}
+            </span>
+          </li>
         </ul>
       <div class="card-footer">
         <a class="card-link btn btn-block btn-primary" [routerLink]="['/cluster/detail',cluster.name]">Details</a>

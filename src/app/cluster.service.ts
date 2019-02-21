@@ -1,3 +1,4 @@
+import { NodeService } from './node.service';
 import { Injectable } from '@angular/core';
 import { Cluster, Instance, Access } from './cluster';
 import { HttpClient } from '@angular/common/http';
@@ -9,30 +10,38 @@ import { Observable } from 'rxjs';
 })
 export class ClusterService {
 
-  clusters;
+  clusters=[];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private nodeService: NodeService,private httpClient: HttpClient) { }
 
   getClusters(): Cluster[] {
-    [1, 2, 3, 4, 5, 6, 7, 8].forEach(element => {
-      const cluster = new Cluster(
-        'name',
-        'ubuntu',
-        'aws',
-        'tk8',
-        'eu-west-1',
-        new Instance('1', 'default'),
-        new Instance('1', 'default'),
-        new Instance('0', 'default'),
-        new Access('', ''),
-      );
-      cluster.name = 'k8s-test-' + element;
-      cluster.provisioner = 'aws';
-      cluster.installer = 'tk8';
-      cluster.keyPairName = 'manuel';
-      cluster.generateKeyPair = false;
-      this.clusters.push(cluster);
+    this.clusters=[];
+    let nodes = this.nodeService.getNodes();
+    const cluster = new Cluster(
+      'test-cluster',
+      'ubuntu',
+      'aws',
+      'tk8',
+      'eu-central-1',
+      new Instance('0', 'default'),
+      new Instance('0', 'default'),
+      new Instance('0', 'default'),
+      new Access('', ''),
+    );
+    cluster.provisioner = 'aws';
+    cluster.installer = 'rke';
+    cluster.keyPairName = 'manuel';
+    cluster.generateKeyPair = false;
+    cluster.master.count = '3';
+    cluster.node.count = '3';
+    cluster.etcd.count = '3';
+
+    nodes.forEach(element => {
+      cluster.os = element.OS;
     });
+
+    this.clusters.push(cluster);
+    console.log(this.clusters);
     return this.clusters;
   }
 

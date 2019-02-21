@@ -1,3 +1,4 @@
+import { NodeService } from './../node.service';
 import { ClusterService } from './../cluster.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cluster.component.less']
 })
 export class ClusterComponent implements OnInit {
-  constructor(protected clusterService: ClusterService) { }
+  constructor(protected nodeService: NodeService,protected clusterService: ClusterService) { }
 
   ngOnInit() {
   }

@@ -1,3 +1,4 @@
+import { NodeService } from './../node.service';
 import { Component, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ClusterService } from '../cluster.service';
 import { ClusterComponent } from '../cluster/cluster.component';
@@ -16,8 +17,8 @@ import { ClusterComponent } from '../cluster/cluster.component';
 })
 export class ClusterDashComponent extends ClusterComponent  implements OnInit {
 
-  constructor(clusterService: ClusterService) {
-    super(clusterService);
+  constructor(nodeService: NodeService, clusterService: ClusterService) {
+    super(nodeService,clusterService);
   }
   ngOnInit() {
   }

@@ -11,6 +11,8 @@ import { ClusterDashComponent } from './cluster-dash/cluster-dash.component';
 import { ClusterDetailComponent } from './cluster-detail/cluster-detail.component';
 import { ClusterCreateComponent } from './cluster-create/cluster-create.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { VersionComponent } from './version/version.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ClusterDashComponent,
     ClusterDetailComponent,
     ClusterCreateComponent,
-    DashboardComponent
+    DashboardComponent,
+    VersionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
   ],
   exports: [],
   providers: [
