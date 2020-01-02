@@ -1,0 +1,1253 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "flannel.alpha.coreos.com/backend-data": "{\"VtepMAC\":\"ae:71:25:73:af:5b\"}",
+                    "flannel.alpha.coreos.com/backend-type": "vxlan",
+                    "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+                    "flannel.alpha.coreos.com/public-ip": "10.0.0.106",
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "rke.cattle.io/external-ip": "35.158.255.221",
+                    "rke.cattle.io/internal-ip": "10.0.0.106",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2019-02-12T09:44:11Z",
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/instance-type": "m5d.4xlarge",
+                    "beta.kubernetes.io/os": "linux",
+                    "failure-domain.beta.kubernetes.io/region": "eu-central-1",
+                    "failure-domain.beta.kubernetes.io/zone": "eu-central-1c",
+                    "kubernetes.io/hostname": "35.158.255.221",
+                    "node-role.kubernetes.io/controlplane": "true",
+                    "node-role.kubernetes.io/etcd": "true",
+                    "node-role.kubernetes.io/worker": "true",
+                    "node-role.ngw": "qa"
+                },
+                "name": "ip-10-0-0-106.eu-central-1.compute.internal",
+                "resourceVersion": "7853026",
+                "selfLink": "/api/v1/nodes/ip-10-0-0-106.eu-central-1.compute.internal",
+                "uid": "c0359ab2-2eaa-11e9-af70-0a8571dd93ce"
+            },
+            "spec": {
+                "podCIDR": "10.42.2.0/24",
+                "providerID": "aws:///eu-central-1c/i-09e737457364a864d"
+            },
+            "status": {
+                "addresses": [
+                    {
+                        "address": "10.0.0.106",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "35.158.255.221",
+                        "type": "ExternalIP"
+                    },
+                    {
+                        "address": "ip-10-0-0-106.eu-central-1.compute.internal",
+                        "type": "InternalDNS"
+                    },
+                    {
+                        "address": "ec2-35-158-255-221.eu-central-1.compute.amazonaws.com",
+                        "type": "ExternalDNS"
+                    },
+                    {
+                        "address": "35.158.255.221",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "attachable-volumes-aws-ebs": "25",
+                    "cpu": "16",
+                    "ephemeral-storage": "7433113179",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "64359252Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "attachable-volumes-aws-ebs": "25",
+                    "cpu": "16",
+                    "ephemeral-storage": "8065444Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "64461652Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:19Z",
+                        "lastTransitionTime": "2019-02-12T09:44:11Z",
+                        "message": "kubelet has sufficient disk space available",
+                        "reason": "KubeletHasSufficientDisk",
+                        "status": "False",
+                        "type": "OutOfDisk"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:19Z",
+                        "lastTransitionTime": "2019-02-12T09:44:11Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:19Z",
+                        "lastTransitionTime": "2019-02-13T01:05:10Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:19Z",
+                        "lastTransitionTime": "2019-02-12T09:44:11Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:19Z",
+                        "lastTransitionTime": "2019-02-12T09:44:41Z",
+                        "message": "kubelet is posting ready status",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "images": [
+                    {
+                        "names": [
+                            "rancher/hyperkube@sha256:3871f8590d6405322317693f90b2c296a15886add9f3c978e972ace540977321",
+                            "rancher/hyperkube:v1.12.3-rancher1"
+                        ],
+                        "sizeBytes": 997619184
+                    },
+                    {
+                        "names": [
+                            "rancher/nginx-ingress-controller@sha256:90841873aaa8079f51d4ed2be668ba48c403b2b1d484bad1061155af4443d872",
+                            "rancher/nginx-ingress-controller:0.16.2-rancher1"
+                        ],
+                        "sizeBytes": 364115902
+                    },
+                    {
+                        "names": [
+                            "rancher/calico-node@sha256:7d363980e3ee75f88e6bbf627757879c794b01e16faac756a07c7b3f16156f74",
+                            "rancher/calico-node:v3.1.3"
+                        ],
+                        "sizeBytes": 248202699
+                    },
+                    {
+                        "names": [
+                            "rancher/rke-tools@sha256:2e12a320fe1eeb1500c6935020b3ad98a8b506e7e1c7d174265fd9d75e22cb23",
+                            "rancher/rke-tools:v0.1.15"
+                        ],
+                        "sizeBytes": 122544129
+                    },
+                    {
+                        "names": [
+                            "fluent/fluent-bit@sha256:313b51885c3524cca9c7fa2c68ea3afce47fd4d22ab7820334cc4cf4764de6f3",
+                            "fluent/fluent-bit:0.13.0"
+                        ],
+                        "sizeBytes": 96644860
+                    },
+                    {
+                        "names": [
+                            "rancher/calico-cni@sha256:f9bdf350a0c91078dc0808e81c13f12f8fc95287d0ae3e34efe3d8a3e1216707",
+                            "rancher/calico-cni:v3.1.3"
+                        ],
+                        "sizeBytes": 68849270
+                    },
+                    {
+                        "names": [
+                            "rancher/coreos-flannel@sha256:57f85f0bb7360f2dd378d74ffc01ac99a4c152ad463455ff429867c6879f4386",
+                            "rancher/coreos-flannel:v0.10.0"
+                        ],
+                        "sizeBytes": 44598861
+                    },
+                    {
+                        "names": [
+                            "rancher/coreos-etcd@sha256:2dc4f04c0da08b12f5574196b10b93890e2c7f67e2add3475a7af69b4504c29f",
+                            "rancher/coreos-etcd:v3.2.18"
+                        ],
+                        "sizeBytes": 37232444
+                    },
+                    {
+                        "names": [
+                            "dockermuenster/caddy@sha256:34899a9cf74fd3943b128e2ce65e08068ec7dcbf3631c5f08c64b483fbf8171b",
+                            "dockermuenster/caddy:0.9.3"
+                        ],
+                        "sizeBytes": 33210596
+                    },
+                    {
+                        "names": [
+                            "giantswarm/tiny-tools@sha256:67d561f61497b831e43428fa204c7d0c757b44bed2e10637a055f2dbb83ad3cc",
+                            "giantswarm/tiny-tools:latest"
+                        ],
+                        "sizeBytes": 23400068
+                    },
+                    {
+                        "names": [
+                            "prom/node-exporter@sha256:ea8396dd32be6195ef03438b2f459b2e69a88b8fc798c3fc51559f56d4b158fa",
+                            "prom/node-exporter:v0.14.0"
+                        ],
+                        "sizeBytes": 18913296
+                    },
+                    {
+                        "names": [
+                            "rancher/pause-amd64@sha256:fcaff905397ba63fd376d0c3019f1f1cb6e7506131389edbcb3d22719f1ae54d",
+                            "rancher/pause-amd64:3.1"
+                        ],
+                        "sizeBytes": 742472
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "00a22745-885b-448d-b80a-e3417d84eab4",
+                    "containerRuntimeVersion": "docker://18.9.2",
+                    "kernelVersion": "4.15.0-1021-aws",
+                    "kubeProxyVersion": "v1.12.3",
+                    "kubeletVersion": "v1.12.3",
+                    "machineID": "3e608929fbd39b959f388bf468c9f0b1",
+                    "operatingSystem": "linux",
+                    "osImage": "Ubuntu 18.04.1 LTS",
+                    "systemUUID": "EC2F85E6-6637-D948-6BBC-65DCB0BA12A6"
+                }
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "flannel.alpha.coreos.com/backend-data": "{\"VtepMAC\":\"e6:c2:aa:25:14:b4\"}",
+                    "flannel.alpha.coreos.com/backend-type": "vxlan",
+                    "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+                    "flannel.alpha.coreos.com/public-ip": "10.0.0.168",
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "rke.cattle.io/external-ip": "18.184.147.13",
+                    "rke.cattle.io/internal-ip": "10.0.0.168",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2018-12-17T19:54:31Z",
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/instance-type": "m5d.4xlarge",
+                    "beta.kubernetes.io/os": "linux",
+                    "failure-domain.beta.kubernetes.io/region": "eu-central-1",
+                    "failure-domain.beta.kubernetes.io/zone": "eu-central-1c",
+                    "kubernetes.io/hostname": "18.184.147.13",
+                    "node-role.kubernetes.io/controlplane": "true",
+                    "node-role.kubernetes.io/etcd": "true",
+                    "node-role.kubernetes.io/worker": "true",
+                    "node-role.ngw": "dev"
+                },
+                "name": "ip-10-0-0-168.eu-central-1.compute.internal",
+                "resourceVersion": "7853002",
+                "selfLink": "/api/v1/nodes/ip-10-0-0-168.eu-central-1.compute.internal",
+                "uid": "91b1d813-0235-11e9-9d72-0afdf6b44912"
+            },
+            "spec": {
+                "podCIDR": "10.42.1.0/24",
+                "providerID": "aws:///eu-central-1c/i-084284c3c5dcba216"
+            },
+            "status": {
+                "addresses": [
+                    {
+                        "address": "10.0.0.168",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "18.184.147.13",
+                        "type": "ExternalIP"
+                    },
+                    {
+                        "address": "ip-10-0-0-168.eu-central-1.compute.internal",
+                        "type": "InternalDNS"
+                    },
+                    {
+                        "address": "ec2-18-184-147-13.eu-central-1.compute.amazonaws.com",
+                        "type": "ExternalDNS"
+                    },
+                    {
+                        "address": "18.184.147.13",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "attachable-volumes-aws-ebs": "25",
+                    "cpu": "16",
+                    "ephemeral-storage": "280981576854",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "64359244Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "attachable-volumes-aws-ebs": "25",
+                    "cpu": "16",
+                    "ephemeral-storage": "304884524Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "64461644Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:10Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has sufficient disk space available",
+                        "reason": "KubeletHasSufficientDisk",
+                        "status": "False",
+                        "type": "OutOfDisk"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:10Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:10Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:10Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:10Z",
+                        "lastTransitionTime": "2018-12-17T19:55:01Z",
+                        "message": "kubelet is posting ready status",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "images": [
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:81c982d4ac9a313e5cce6f12502dba36fb02ed759e25cd3a8dd493db64f7d19f",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-46"
+                        ],
+                        "sizeBytes": 14076499038
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:4748834565476f90bedb1a614f825ffab92a5cd04715a88c62e1b157700de853",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-39"
+                        ],
+                        "sizeBytes": 2531504478
+                    },
+                    {
+                        "names": [
+                            "docker.bintray.io/jfrog/artifactory-pro@sha256:c900003c7de9086bcfd3bcf44b06a778d2934ff9d496a6afc45cdb8134a3cd71",
+                            "docker.bintray.io/jfrog/artifactory-pro:latest"
+                        ],
+                        "sizeBytes": 1046451666
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:c68acb404cb907a2f529f38105facdd32bbb129b626daf9885045d2a6bf3a266",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:1.9.23.03582_20181217007",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:latest"
+                        ],
+                        "sizeBytes": 1038667726
+                    },
+                    {
+                        "names": [
+                            "rancher/hyperkube@sha256:3871f8590d6405322317693f90b2c296a15886add9f3c978e972ace540977321",
+                            "rancher/hyperkube:v1.12.3-rancher1"
+                        ],
+                        "sizeBytes": 997619184
+                    },
+                    {
+                        "names": [
+                            "docker.bintray.io/jfrog/artifactory-oss@sha256:c087affca6e4f96077f8255eb83497db70661b4b422a611988ad101d6975a25b",
+                            "docker.bintray.io/jfrog/artifactory-oss:latest"
+                        ],
+                        "sizeBytes": 896954625
+                    },
+                    {
+                        "names": [
+                            "jenkins/jenkins@sha256:0cc3f0cc112035da773cf1f892ab9240cce4d8df0048ac6a0073bb5d0b7e448b",
+                            "jenkins/jenkins:lts"
+                        ],
+                        "sizeBytes": 700932057
+                    },
+                    {
+                        "names": [
+                            "argoproj/argocd@sha256:2f70c74e88768aa7d9527d1990c15d042c775d410c00b81e86d4b8f90e757e38",
+                            "argoproj/argocd:v0.11.1"
+                        ],
+                        "sizeBytes": 636612909
+                    },
+                    {
+                        "names": [
+                            "docker.elastic.co/elasticsearch/elasticsearch-oss@sha256:2d9c774c536bd1f64abc4993ebc96a2344404d780cbeb81a8b3b4c3807550e57",
+                            "docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4"
+                        ],
+                        "sizeBytes": 424283933
+                    },
+                    {
+                        "names": [
+                            "rancher/nginx-ingress-controller@sha256:90841873aaa8079f51d4ed2be668ba48c403b2b1d484bad1061155af4443d872",
+                            "rancher/nginx-ingress-controller:0.16.2-rancher1"
+                        ],
+                        "sizeBytes": 364115902
+                    },
+                    {
+                        "names": [
+                            "rancher/rancher-agent@sha256:b413508a3c82460b2d4d13928989bb2ef7f03501f4dc88f9e7491e2de4d273bc",
+                            "rancher/rancher-agent:v2.1.6"
+                        ],
+                        "sizeBytes": 295585888
+                    },
+                    {
+                        "names": [
+                            "rancher/calico-node@sha256:7d363980e3ee75f88e6bbf627757879c794b01e16faac756a07c7b3f16156f74",
+                            "rancher/calico-node:v3.1.3"
+                        ],
+                        "sizeBytes": 248202699
+                    },
+                    {
+                        "names": [
+                            "grafana/grafana@sha256:61b7885bde628cba502dcf6f131cba052a959024d50d81d4a218950fcfa20a00",
+                            "grafana/grafana:5.4.3"
+                        ],
+                        "sizeBytes": 240411891
+                    },
+                    {
+                        "names": [
+                            "rancher/rke-tools@sha256:2e12a320fe1eeb1500c6935020b3ad98a8b506e7e1c7d174265fd9d75e22cb23",
+                            "rancher/rke-tools:v0.1.15"
+                        ],
+                        "sizeBytes": 122544129
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:8d16030429582f38a85dc492821fc21d2e6e6788d9111cb436789371bae72d2a",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:development-20190122001"
+                        ],
+                        "sizeBytes": 111264374
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:ab364cec17213e2fc92d0ac1786d0da08f69647e8cdd2032dfa0ed945e71a520",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:development-20190121001"
+                        ],
+                        "sizeBytes": 111264223
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:0a2944065e44a69bd7f0bb661875f6d2655533ff5a0f9ba2eb912a11ff33595b",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20190110002"
+                        ],
+                        "sizeBytes": 111259917
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:54f26282c86354aba8b6c098595586c7e04e56bfdef3cb4c2bcd889b3a2f5513",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20190110001"
+                        ],
+                        "sizeBytes": 111257206
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:7443a921b238b09b2796911b80f0989db29e437281bbf5dc15df4641ec1a9c8f",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181218002"
+                        ],
+                        "sizeBytes": 111237305
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:05a2e0ba0856ba7b7af5917527edac2aeaae7df98296ede87beb7962f5020615"
+                        ],
+                        "sizeBytes": 111237091
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:cedbc705249d3e58396128276911dcc28908e88eea583fb624a6d4f6588b12f7",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181218003"
+                        ],
+                        "sizeBytes": 111236774
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:e4370f0d78d123de61ecdf46f5b621348d9612e801d989f8f3024b7722816652",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181217004"
+                        ],
+                        "sizeBytes": 111232802
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:8764ee946046705d551a426c46006bc4814a4f092f48c1db78705dfc752f927a",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181218001"
+                        ],
+                        "sizeBytes": 111231794
+                    },
+                    {
+                        "names": [
+                            "quay.io/prometheus/prometheus@sha256:ac9fa876d7341f92bc6cda4b5e0398b63e8c4155b35a8cad119420a188e80537",
+                            "quay.io/prometheus/prometheus:latest"
+                        ],
+                        "sizeBytes": 101131229
+                    },
+                    {
+                        "names": [
+                            "quay.io/prometheus/prometheus@sha256:2794b0ab9ebaa989632905abfa144dec2af8762d9d9aeecc3741652308248089"
+                        ],
+                        "sizeBytes": 97760443
+                    },
+                    {
+                        "names": [
+                            "fluent/fluent-bit@sha256:313b51885c3524cca9c7fa2c68ea3afce47fd4d22ab7820334cc4cf4764de6f3",
+                            "fluent/fluent-bit:0.13.0"
+                        ],
+                        "sizeBytes": 96644860
+                    },
+                    {
+                        "names": [
+                            "gcr.io/kubernetes-helm/tiller@sha256:f6d8f4ab9ba993b5f5b60a6edafe86352eabe474ffeb84cb6c79b8866dce45d1",
+                            "gcr.io/kubernetes-helm/tiller:v2.11.0"
+                        ],
+                        "sizeBytes": 71821984
+                    },
+                    {
+                        "names": [
+                            "rancher/calico-cni@sha256:f9bdf350a0c91078dc0808e81c13f12f8fc95287d0ae3e34efe3d8a3e1216707",
+                            "rancher/calico-cni:v3.1.3"
+                        ],
+                        "sizeBytes": 68849270
+                    },
+                    {
+                        "names": [
+                            "gcr.io/google_containers/kube-state-metrics@sha256:e913a24b0a0a89e23968d5e3fbf99501d17c04011fb54b24df0aca6bea232022",
+                            "gcr.io/google_containers/kube-state-metrics:v0.5.0"
+                        ],
+                        "sizeBytes": 45613239
+                    },
+                    {
+                        "names": [
+                            "rancher/coreos-flannel@sha256:57f85f0bb7360f2dd378d74ffc01ac99a4c152ad463455ff429867c6879f4386",
+                            "rancher/coreos-flannel:v0.10.0"
+                        ],
+                        "sizeBytes": 44598861
+                    },
+                    {
+                        "names": [
+                            "rancher/coreos-etcd@sha256:2dc4f04c0da08b12f5574196b10b93890e2c7f67e2add3475a7af69b4504c29f",
+                            "rancher/coreos-etcd:v3.2.18"
+                        ],
+                        "sizeBytes": 37232444
+                    },
+                    {
+                        "names": [
+                            "prom/alertmanager@sha256:196af0317d3449c1300aa26ff0366f68c67d04581d2c9f8609cbb227424e226c",
+                            "quay.io/prometheus/alertmanager@sha256:0d2a66bb6510955d07a15ecae2c47f0ba0d8efb0b9204539c3b83c7fce34ebb2",
+                            "prom/alertmanager:v0.15.3",
+                            "quay.io/prometheus/alertmanager:latest"
+                        ],
+                        "sizeBytes": 34526872
+                    },
+                    {
+                        "names": [
+                            "dockermuenster/caddy@sha256:34899a9cf74fd3943b128e2ce65e08068ec7dcbf3631c5f08c64b483fbf8171b",
+                            "dockermuenster/caddy:0.9.3"
+                        ],
+                        "sizeBytes": 33210596
+                    },
+                    {
+                        "names": [
+                            "quay.io/coreos/kube-state-metrics@sha256:b7a3143bd1eb7130759c9259073b9f239d0eeda09f5210f1cd31f1a530599ea1",
+                            "quay.io/coreos/kube-state-metrics:v1.5.0"
+                        ],
+                        "sizeBytes": 31825332
+                    },
+                    {
+                        "names": [
+                            "quay.io/dexidp/dex@sha256:a0521d028ce66f9498fe5b44eb404f96203a4fd387a95e817ab6655bd6b1ee41",
+                            "quay.io/dexidp/dex:v2.12.0"
+                        ],
+                        "sizeBytes": 28880467
+                    },
+                    {
+                        "names": [
+                            "giantswarm/tiny-tools@sha256:67d561f61497b831e43428fa204c7d0c757b44bed2e10637a055f2dbb83ad3cc",
+                            "giantswarm/tiny-tools:latest"
+                        ],
+                        "sizeBytes": 23400068
+                    },
+                    {
+                        "names": [
+                            "jimmidyson/configmap-reload@sha256:befec9f23d2a9da86a298d448cc9140f56a457362a7d9eecddba192db1ab489e",
+                            "jimmidyson/configmap-reload:v0.2.2"
+                        ],
+                        "sizeBytes": 22381476
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:d2e8f32e4038b5b3095215c29e723fcc7bd4cd590b108df24d7921f0ac904396",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-64"
+                        ],
+                        "sizeBytes": 20997406
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:eb01835d848e0a566f2bf064ad3f01b229f085f55b19418e1b538d782eb62875",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-63"
+                        ],
+                        "sizeBytes": 20988999
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:dbe8121f47b35db03ce66b8df0748b6d19676379c2ba761e54981e1f2564be5c",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-62"
+                        ],
+                        "sizeBytes": 20988161
+                    },
+                    {
+                        "names": [
+                            "prom/node-exporter@sha256:c390c8fea4cd362a28ad5070aedd6515aacdfdffd21de6db42ead05e332be5a9",
+                            "prom/node-exporter:v0.17.0"
+                        ],
+                        "sizeBytes": 20982005
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:8c674fa459585499d545a9354dd7a457ef079c80ad8c7ce649753518dc7d7438",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-61"
+                        ],
+                        "sizeBytes": 20923016
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:9a4941ad27eaaa3fb60500a78df370e676ff258e814c9824e6bff65317c4ce13",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-60"
+                        ],
+                        "sizeBytes": 20922731
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:f4a7104209117cfde65ea0f245f9a6ca8c20317f9f53bb1cc94e4759e7c5f15c",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-50"
+                        ],
+                        "sizeBytes": 20922729
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:c3bccda8dd2572c2099f429fccd7a6aa4496f5b5daa54f4ec2cad5368465c825",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-55"
+                        ],
+                        "sizeBytes": 20922579
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:e8a83659ab5446018df0a3bca25fee9267c3b19def0097633be5a847f229c8d8",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-59"
+                        ],
+                        "sizeBytes": 20922506
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:118eb9c79d415c3b9c441000049632b0fa75f9fed5da91f1c119650214d0412b",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-56"
+                        ],
+                        "sizeBytes": 20922447
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:f3ab9fb357bb7c60885bf9719ca3f04c63f7d7fa376d6d9ecd95cc8412922fd5",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-54"
+                        ],
+                        "sizeBytes": 20922417
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:f2fd9b0deb54a9663800935f218654a295247912575642b47d16cb6520bbd343",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-57"
+                        ],
+                        "sizeBytes": 20922382
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:2f12ce63d3efdf8f26516e299017bbc5e8eab9bb04b23c982230927538449ee9",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:dev-52"
+                        ],
+                        "sizeBytes": 20922353
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "00572b3f-a3d9-4a17-828c-e6b2f3b98200",
+                    "containerRuntimeVersion": "docker://18.9.0",
+                    "kernelVersion": "4.15.0-1029-aws",
+                    "kubeProxyVersion": "v1.12.3",
+                    "kubeletVersion": "v1.12.3",
+                    "machineID": "3e608929fbd39b959f388bf468c9f0b1",
+                    "operatingSystem": "linux",
+                    "osImage": "Ubuntu 18.04.1 LTS",
+                    "systemUUID": "EC2BF879-1518-98A4-CE7B-27C292AA0C4F"
+                },
+                "volumesAttached": [
+                    {
+                        "devicePath": "/dev/xvdce",
+                        "name": "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-043b1b4534cf1f818"
+                    },
+                    {
+                        "devicePath": "/dev/xvdbn",
+                        "name": "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-018ddc2ba8cdcc116"
+                    }
+                ],
+                "volumesInUse": [
+                    "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-018ddc2ba8cdcc116",
+                    "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-043b1b4534cf1f818"
+                ]
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "flannel.alpha.coreos.com/backend-data": "{\"VtepMAC\":\"3e:03:1c:ef:db:89\"}",
+                    "flannel.alpha.coreos.com/backend-type": "vxlan",
+                    "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+                    "flannel.alpha.coreos.com/public-ip": "10.0.0.173",
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "rke.cattle.io/external-ip": "3.122.97.186",
+                    "rke.cattle.io/internal-ip": "10.0.0.173",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2018-12-17T19:54:31Z",
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/instance-type": "m5d.4xlarge",
+                    "beta.kubernetes.io/os": "linux",
+                    "failure-domain.beta.kubernetes.io/region": "eu-central-1",
+                    "failure-domain.beta.kubernetes.io/zone": "eu-central-1c",
+                    "kubernetes.io/hostname": "3.122.97.186",
+                    "node-role.kubernetes.io/controlplane": "true",
+                    "node-role.kubernetes.io/etcd": "true",
+                    "node-role.kubernetes.io/worker": "true",
+                    "node-role.ngw": "dev"
+                },
+                "name": "ip-10-0-0-173.eu-central-1.compute.internal",
+                "resourceVersion": "7853022",
+                "selfLink": "/api/v1/nodes/ip-10-0-0-173.eu-central-1.compute.internal",
+                "uid": "91a533c6-0235-11e9-b356-0a8b71ccdb70"
+            },
+            "spec": {
+                "podCIDR": "10.42.0.0/24",
+                "providerID": "aws:///eu-central-1c/i-0c8da1e76fdc163f0"
+            },
+            "status": {
+                "addresses": [
+                    {
+                        "address": "10.0.0.173",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "3.122.97.186",
+                        "type": "ExternalIP"
+                    },
+                    {
+                        "address": "ip-10-0-0-173.eu-central-1.compute.internal",
+                        "type": "InternalDNS"
+                    },
+                    {
+                        "address": "ec2-3-122-97-186.eu-central-1.compute.amazonaws.com",
+                        "type": "ExternalDNS"
+                    },
+                    {
+                        "address": "3.122.97.186",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "attachable-volumes-aws-ebs": "25",
+                    "cpu": "16",
+                    "ephemeral-storage": "280981576854",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "64359244Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "attachable-volumes-aws-ebs": "25",
+                    "cpu": "16",
+                    "ephemeral-storage": "304884524Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "64461644Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:17Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has sufficient disk space available",
+                        "reason": "KubeletHasSufficientDisk",
+                        "status": "False",
+                        "type": "OutOfDisk"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:17Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:17Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:17Z",
+                        "lastTransitionTime": "2018-12-17T19:54:31Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2019-02-13T17:03:17Z",
+                        "lastTransitionTime": "2018-12-17T19:55:01Z",
+                        "message": "kubelet is posting ready status",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "images": [
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:81c982d4ac9a313e5cce6f12502dba36fb02ed759e25cd3a8dd493db64f7d19f",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-46"
+                        ],
+                        "sizeBytes": 14076499038
+                    },
+                    {
+                        "names": [
+                            "muellermh/jenkins@sha256:10c393f886096013d91d1e4725d5ca8b80d18603a6d0042eae8529034adc3e3a",
+                            "muellermh/jenkins:latest"
+                        ],
+                        "sizeBytes": 1256265370
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:c68acb404cb907a2f529f38105facdd32bbb129b626daf9885045d2a6bf3a266",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:1.9.23.03582_20181217007"
+                        ],
+                        "sizeBytes": 1038667726
+                    },
+                    {
+                        "names": [
+                            "rancher/hyperkube@sha256:3871f8590d6405322317693f90b2c296a15886add9f3c978e972ace540977321",
+                            "rancher/hyperkube:v1.12.3-rancher1"
+                        ],
+                        "sizeBytes": 997619184
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:5fe9aaaabc055d6fa24e65a8d5a01f1cf6a3de94a31d28aed23ece09d68f2553",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-12"
+                        ],
+                        "sizeBytes": 942089141
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:6d9249734e218ed007b5b36bb8f814761a91763fd9097008673896fb69b0b1e4",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-17"
+                        ],
+                        "sizeBytes": 942089141
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:68afab086262936797960ebe0183cc2ae56f94a0e3b26a448b2f961412d42fdc",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-13"
+                        ],
+                        "sizeBytes": 942089141
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:9e3ca2e148371503b16b7dfe55ba0e66fdedf9ade484433b808b942402f4a6aa",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-15"
+                        ],
+                        "sizeBytes": 942089141
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:47822e3878f8bce800e05b295d24fe67c491b0c0c0e96ed290ffd4b2e0c1e201",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-16"
+                        ],
+                        "sizeBytes": 942089141
+                    },
+                    {
+                        "names": [
+                            "\u003cnone\u003e@\u003cnone\u003e",
+                            "\u003cnone\u003e:\u003cnone\u003e"
+                        ],
+                        "sizeBytes": 927680202
+                    },
+                    {
+                        "names": [
+                            "\u003cnone\u003e@\u003cnone\u003e",
+                            "\u003cnone\u003e:\u003cnone\u003e"
+                        ],
+                        "sizeBytes": 927679659
+                    },
+                    {
+                        "names": [
+                            "\u003cnone\u003e@\u003cnone\u003e",
+                            "\u003cnone\u003e:\u003cnone\u003e"
+                        ],
+                        "sizeBytes": 927551285
+                    },
+                    {
+                        "names": [
+                            "node@sha256:491424526a6556f7698c5d659b55f15d63b63a864c420a1f607d1a9d90b18a4a",
+                            "node:latest"
+                        ],
+                        "sizeBytes": 898953643
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:f7318ef37ace829dd71be58e81b5599de83ccdcdef1b59a8a26bf720b4ab90c8",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-33"
+                        ],
+                        "sizeBytes": 844138202
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:cfb948e7fe90ae791d32f951c84ab445788f7b9be7c8ec3dcd9017acedd6840d",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-28"
+                        ],
+                        "sizeBytes": 844138152
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:3f0ea47248ea953d5295f526839871eeeeb3bc09ac952de6ff538da2e4f98c2c",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-30"
+                        ],
+                        "sizeBytes": 844138151
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:cf77203411039379882f57755ab5587115c87eb0a1fef9066c9d31c2fb1059e1",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-27"
+                        ],
+                        "sizeBytes": 844138151
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:cce19c674af8458d7d4eddc3b17114f4070a6878e1f828e3baef3703377c0053",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-29"
+                        ],
+                        "sizeBytes": 844138151
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:754c94027797b9b2ad7d1c3be5967869994471705cb4ea4c9c6ae0c0cc23920f",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-32"
+                        ],
+                        "sizeBytes": 844138129
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:d6e7cc4b6b50d9eef1f2b26c488a4ac177f897a07b2a50b5f4c07ac1990a05dd",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-26"
+                        ],
+                        "sizeBytes": 844138126
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:325a17d3ca649f7de6b2f5a101ecd8c6a0c90ff9987d929d6ed6eb8542a75a6a",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-25"
+                        ],
+                        "sizeBytes": 844138124
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:2e139d498f1980e1efc2d2e7273de0513402fdd52ddc236a9306c9244176585c",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-24"
+                        ],
+                        "sizeBytes": 844127878
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:c4f795fdf23f3d7ee6a5b03b1d4fada1fe92272217d43f13cdec697ab84c5485",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-22"
+                        ],
+                        "sizeBytes": 844127878
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:0c7be1f0315babc1b8ef4ee9885a14d7bef5d2a7971c4cd517e7e93df0363f2c",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-21"
+                        ],
+                        "sizeBytes": 844127878
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:c4d8a95f363c22c64e3246557910f434a67cd2d2ec604c2927e2cfa3c78e9970",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-20"
+                        ],
+                        "sizeBytes": 844127878
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:42f9a8cb33de81e4d09d4e1aff81c2d977f299b6d9ceb31ecacc6c38a5f52c28",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-19"
+                        ],
+                        "sizeBytes": 844127878
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core@sha256:4e2cd21982e82ee5f1444754b05919cdc664c701f72800a84fc2a22ec9e6d8e4",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core:dev-23"
+                        ],
+                        "sizeBytes": 844127878
+                    },
+                    {
+                        "names": [
+                            "java@sha256:c1ff613e8ba25833d2e1940da0940c3824f03f802c449f3d1815a66b7f8c0e9d",
+                            "java:8"
+                        ],
+                        "sizeBytes": 643195347
+                    },
+                    {
+                        "names": [
+                            "argoproj/argocd@sha256:2f70c74e88768aa7d9527d1990c15d042c775d410c00b81e86d4b8f90e757e38",
+                            "argoproj/argocd:v0.11.1"
+                        ],
+                        "sizeBytes": 636612909
+                    },
+                    {
+                        "names": [
+                            "jenkins/slave@sha256:5683f906bab2e28abe332619bcec340a4da8553f10c34bbcbe6b555d32f76196",
+                            "jenkins/slave:latest"
+                        ],
+                        "sizeBytes": 625145766
+                    },
+                    {
+                        "names": [
+                            "muellermh/jenkins-agent@sha256:15155cf3e4c52ad8470c2d873147157c99f4faf9e2b4c60d7edf8af547ef9f25",
+                            "muellermh/jenkins-agent:latest"
+                        ],
+                        "sizeBytes": 624895777
+                    },
+                    {
+                        "names": [
+                            "rancher/rancher@sha256:924b8acaa169821c86b840c33e1d79d87db0dfbb84dae6c102cc7c196811230f",
+                            "rancher/rancher:latest"
+                        ],
+                        "sizeBytes": 542239632
+                    },
+                    {
+                        "names": [
+                            "docker.elastic.co/kibana/kibana-oss@sha256:1d1f9bac326bf276010df82a2b4593619f48a5207619e8817c8b20d5a1bb3547",
+                            "docker.elastic.co/kibana/kibana-oss:6.2.4"
+                        ],
+                        "sizeBytes": 527486688
+                    },
+                    {
+                        "names": [
+                            "docker.elastic.co/elasticsearch/elasticsearch-oss@sha256:2d9c774c536bd1f64abc4993ebc96a2344404d780cbeb81a8b3b4c3807550e57",
+                            "docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4"
+                        ],
+                        "sizeBytes": 424283933
+                    },
+                    {
+                        "names": [
+                            "rancher/nginx-ingress-controller@sha256:90841873aaa8079f51d4ed2be668ba48c403b2b1d484bad1061155af4443d872",
+                            "rancher/nginx-ingress-controller:0.16.2-rancher1"
+                        ],
+                        "sizeBytes": 364115902
+                    },
+                    {
+                        "names": [
+                            "rancher/rancher-agent@sha256:b413508a3c82460b2d4d13928989bb2ef7f03501f4dc88f9e7491e2de4d273bc",
+                            "rancher/rancher-agent:v2.1.6"
+                        ],
+                        "sizeBytes": 295585888
+                    },
+                    {
+                        "names": [
+                            "grafana/grafana@sha256:7ff7f9b2501a5d55b55ce3f58d21771b1c5af1f2a4ab7dbf11bef7142aae7033",
+                            "grafana/grafana:4.2.0"
+                        ],
+                        "sizeBytes": 277940263
+                    },
+                    {
+                        "names": [
+                            "rancher/calico-node@sha256:7d363980e3ee75f88e6bbf627757879c794b01e16faac756a07c7b3f16156f74",
+                            "rancher/calico-node:v3.1.3"
+                        ],
+                        "sizeBytes": 248202699
+                    },
+                    {
+                        "names": [
+                            "jenkins/slave@sha256:811caea3d26fde1fa4eec889f810a1dde540ef491cf61d6d1e7635585aab60f1",
+                            "jenkins/slave:3.27-1-alpine"
+                        ],
+                        "sizeBytes": 129188621
+                    },
+                    {
+                        "names": [
+                            "rancher/rke-tools@sha256:2e12a320fe1eeb1500c6935020b3ad98a8b506e7e1c7d174265fd9d75e22cb23",
+                            "rancher/rke-tools:v0.1.15"
+                        ],
+                        "sizeBytes": 122544129
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:8d16030429582f38a85dc492821fc21d2e6e6788d9111cb436789371bae72d2a",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:development-20190122001"
+                        ],
+                        "sizeBytes": 111264374
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:ab364cec17213e2fc92d0ac1786d0da08f69647e8cdd2032dfa0ed945e71a520",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:development-20190121001"
+                        ],
+                        "sizeBytes": 111264223
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:0a2944065e44a69bd7f0bb661875f6d2655533ff5a0f9ba2eb912a11ff33595b",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20190110002"
+                        ],
+                        "sizeBytes": 111259917
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:54f26282c86354aba8b6c098595586c7e04e56bfdef3cb4c2bcd889b3a2f5513",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20190110001"
+                        ],
+                        "sizeBytes": 111257206
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:7443a921b238b09b2796911b80f0989db29e437281bbf5dc15df4641ec1a9c8f",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181218002"
+                        ],
+                        "sizeBytes": 111237305
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:cedbc705249d3e58396128276911dcc28908e88eea583fb624a6d4f6588b12f7",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181218003"
+                        ],
+                        "sizeBytes": 111236774
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:e4370f0d78d123de61ecdf46f5b621348d9612e801d989f8f3024b7722816652",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181217004"
+                        ],
+                        "sizeBytes": 111232802
+                    },
+                    {
+                        "names": [
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui@sha256:8764ee946046705d551a426c46006bc4814a4f092f48c1db78705dfc752f927a",
+                            "879033979788.dkr.ecr.eu-central-1.amazonaws.com/ngw-core-ds-ccui:20181218001"
+                        ],
+                        "sizeBytes": 111231794
+                    },
+                    {
+                        "names": [
+                            "nginx@sha256:b543f6d0983fbc25b9874e22f4fe257a567111da96fd1d8f1b44315f1236398c",
+                            "nginx:latest"
+                        ],
+                        "sizeBytes": 109174343
+                    },
+                    {
+                        "names": [
+                            "quay.io/prometheus/prometheus@sha256:2794b0ab9ebaa989632905abfa144dec2af8762d9d9aeecc3741652308248089",
+                            "quay.io/prometheus/prometheus:latest"
+                        ],
+                        "sizeBytes": 97760443
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "e5dc9e62-49b3-455c-97a3-26d991991fb1",
+                    "containerRuntimeVersion": "docker://18.9.0",
+                    "kernelVersion": "4.15.0-1029-aws",
+                    "kubeProxyVersion": "v1.12.3",
+                    "kubeletVersion": "v1.12.3",
+                    "machineID": "3e608929fbd39b959f388bf468c9f0b1",
+                    "operatingSystem": "linux",
+                    "osImage": "Ubuntu 18.04.1 LTS",
+                    "systemUUID": "EC2099A3-5E61-52DE-BC27-709C21CE0339"
+                },
+                "volumesAttached": [
+                    {
+                        "devicePath": "/dev/xvdcq",
+                        "name": "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-0be5cfb5a1eacb10e"
+                    },
+                    {
+                        "devicePath": "/dev/xvdbg",
+                        "name": "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-01ea0aeecfc887b08"
+                    },
+                    {
+                        "devicePath": "/dev/xvdbd",
+                        "name": "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-09f93b624e45a2ed1"
+                    },
+                    {
+                        "devicePath": "/dev/xvdce",
+                        "name": "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-07cc8bbf6668e4614"
+                    }
+                ],
+                "volumesInUse": [
+                    "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-01ea0aeecfc887b08",
+                    "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-07cc8bbf6668e4614",
+                    "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-09f93b624e45a2ed1",
+                    "kubernetes.io/aws-ebs/aws://eu-central-1c/vol-0be5cfb5a1eacb10e"
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

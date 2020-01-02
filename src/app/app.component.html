@@ -1,0 +1,35 @@
+<div class="container-fluid">
+<header class="row navbar ">
+  <a class="navbar-brand" [routerLink]="['/']"><img height="50" width="100" src="assets/dark_logo_transparent.png" alt="TK8 Web Edition"></a>
+  <nav class="col-9">
+    <ul class="nav nav-pills justify-content-end">
+      <li class="nav-item m-1">
+        <a class="nav-link" href="https://bit.ly/tk8_web_slack" target="_blank">Contact</a>
+      </li>
+      <li class="nav-item m-1">
+        <a class="nav-link" [routerLink]="['/version']">Version</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <nav>
+        <ul class="nav flex-column">
+          <li class="nav-item m-1">
+            <a class="nav-link btn btn-primary" [routerLink]="['/']">Dashboard</a>
+          </li>
+          <li class="nav-item m-1">
+            <a class="nav-link btn btn-warning" [routerLink]="['/cluster/create']">Create new Cluster</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-md-10">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+</div>
