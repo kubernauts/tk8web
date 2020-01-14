@@ -1,3 +1,4 @@
+import { SomethingComponent } from './something/something.component';
 import { VersionComponent } from './version/version.component';
 import { ClusterDetailComponent } from './cluster-detail/cluster-detail.component';
 import { ClusterCreateComponent } from './cluster-create/cluster-create.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'cluster/detail/:cluster', component: ClusterDetailComponent},
   {path: 'contact', redirectTo: 'https://bit.ly/tk8-web-kubernauts'},
   {path: 'version', component: VersionComponent},
+  {path: 'something', component: SomethingComponent},
 ];
 
 @NgModule({

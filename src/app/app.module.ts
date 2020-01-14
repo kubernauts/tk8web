@@ -13,6 +13,7 @@ import { ClusterCreateComponent } from './cluster-create/cluster-create.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VersionComponent } from './version/version.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SomethingComponent } from './something/something.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ClusterDetailComponent,
     ClusterCreateComponent,
     DashboardComponent,
-    VersionComponent
+    VersionComponent,
+    SomethingComponent
   ],
   imports: [
     BrowserModule,
