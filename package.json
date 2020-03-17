@@ -27,10 +27,11 @@
     "rebuild": "^0.1.2",
     "rxjs": "^6.5.4",
     "web-animations-js": "^2.3.2",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "acorn": "^6.4.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.22",
+    "@angular-devkit/build-angular": "^0.900.6",
     "@angular/cli": "^8.3.22",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "^8.2.14",

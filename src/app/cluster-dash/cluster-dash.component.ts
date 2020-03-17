@@ -18,7 +18,7 @@ import { ClusterComponent } from '../cluster/cluster.component';
 export class ClusterDashComponent extends ClusterComponent  implements OnInit {
 
   constructor(nodeService: NodeService, clusterService: ClusterService) {
-    super(nodeService,clusterService);
+    super(nodeService, clusterService);
   }
   ngOnInit() {
   }
