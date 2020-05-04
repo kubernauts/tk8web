@@ -1,0 +1,75 @@
+name: CICD
+
+on: [push]
+
+env:
+
+  APPLICATION_NAME: tk8web
+  REPO_NAME: kubernauts
+  KUBE_CONFIG: "${{ secrets.KUBECONFIG }}"
+
+jobs:
+
+  pipeline:
+    
+    runs-on: ubuntu-18.04
+    
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: setup Node.js 10 env
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Install on Node.js 10
+      run: npm install
+
+    - name: Build on Node.js 10
+      run: npm run build -- --output-path=./dist/out 
+      env:
+        CI: true
+
+    - name: Build docker image
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_REGISTRY }}/$REPO_NAME/$APPLICATION_NAME:latest
+    
+    - name: Log into private registry
+      run: echo "${{ secrets.DOCKER_PASSWD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u ${{ secrets.DOCKER_UNAME }} --password-stdin
+
+    - name: Push image
+      run: |
+        IMAGE_NAME=${{ secrets.DOCKER_REGISTRY }}/$REPO_NAME/$APPLICATION_NAME
+        VERSION=$(echo $GITHUB_SHA | cut -c 1-6)
+        echo VERSION=$VERSION
+        echo ::set-env name=DOCKER_IMAGE_TAG::$(echo $IMAGE_NAME:$VERSION) 
+        
+        docker tag $IMAGE_NAME:latest $IMAGE_NAME:$VERSION
+        docker push $IMAGE_NAME:$VERSION
+        docker push $IMAGE_NAME:latest
+
+    - name: Configure kubeconfig
+      run: |
+        mkdir -p ~/.kube
+        echo $KUBE_CONFIG | base64 -d > ~/.kube/config
+        
+    - name: Deploy latest image
+      run: |
+        echo "kubectl validation"
+        kubectl cluster-info
+        
+        echo "setting authentication for gitlab registry"
+        kubectl -n tk8web delete --ignore-not-found=true secret registry-auth
+        kubectl -n tk8web create secret docker-registry registry-auth --docker-server=${{ secrets.DOCKER_REGISTRY }} --docker-username=${{ secrets.DOCKER_UNAME }} --docker-password=${{ secrets.DOCKER_PASSWD }}
+        
+        echo "Deploying latest image"
+        kubectl -n tk8web get pods -l app=tk8web
+        
+        echo "set deployment to latest Image $DOCKER_IMAGE_TAG"
+        kubectl -n tk8web set image deployment tk8web tk8web=$DOCKER_IMAGE_TAG
+        kubectl -n tk8web rollout status deployment tk8web
+        
+    - name: Cleanup kubeconfig
+      run: |
+        rm -f ~/.kube/config
