@@ -73,3 +73,13 @@ jobs:
     - name: Cleanup kubeconfig
       run: |
         rm -f ~/.kube/config
+        
+    - name: Slack
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_CHANNEL: alerts
+        SLACK_COLOR: '#3278BD'
+        SLACK_MESSAGE: 'Github action $REPO_NAME $APPLICATION_NAME completed :rocket:'
+        SLACK_TITLE: Github action successful
+        SLACK_USERNAME: Octocat
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
