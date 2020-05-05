@@ -79,7 +79,7 @@ jobs:
       env:
         SLACK_CHANNEL: alerts
         SLACK_COLOR: '#3278BD'
-        SLACK_MESSAGE: 'Github action $REPO_NAME $APPLICATION_NAME completed :rocket:'
-        SLACK_TITLE: Github action successful
+        SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/Octocat.png
+        SLACK_TITLE: 'Github action successful :rocket:'
         SLACK_USERNAME: Octocat
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
