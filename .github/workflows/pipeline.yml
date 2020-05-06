@@ -4,7 +4,7 @@ on: [push]
 
 env:
 
-  APPLICATION_NAME: tk8web
+  APPLICATION_NAME: ${{ github.repository#*/ }}
   REPO_NAME: ${{ github.repository_owner }}
   KUBE_CONFIG: "${{ secrets.KUBECONFIG }}"
 
