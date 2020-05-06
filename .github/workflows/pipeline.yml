@@ -18,6 +18,7 @@ jobs:
 
     - name: Set ENV variables
       run: for v in `cat env` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
+      shell: bash
 
     - name: Checkout
       uses: actions/checkout@v1
