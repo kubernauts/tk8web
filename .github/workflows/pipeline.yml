@@ -18,9 +18,10 @@ jobs:
     - name: set env APPLICATION_NAME
       run: |
         echo ::set-env name=APPLICATION_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
-        echo ::set-env name=KUBE_NAMESPACE::$APPLICATION_NAME
-        echo ::set-env name=KUBE_DEPLOYMENT::$APPLICATION_NAME
-        echo ::set-env name=KUBE_LABEL::$APPLICATION_NAME
+        echo ::set-env name=KUBE_NAMESPACE::$(echo $APPLICATION_NAME)
+        echo ::set-env name=KUBE_DEPLOYMENT::$(echo $APPLICATION_NAME)
+        echo ::set-env name=KUBE_LABEL::$(echo $APPLICATION_NAME)
+        echo ::set-env name=KUBE_CONTAINERNAME::$(echo $APPLICATION_NAME)
 
     - name: Checkout
       uses: actions/checkout@v1
@@ -66,15 +67,15 @@ jobs:
         kubectl cluster-info
         
         echo "setting authentication for gitlab registry"
-        kubectl -n tk8web delete --ignore-not-found=true secret registry-auth
-        kubectl -n tk8web create secret docker-registry registry-auth --docker-server=${{ secrets.DOCKER_REGISTRY }} --docker-username=${{ secrets.DOCKER_UNAME }} --docker-password=${{ secrets.DOCKER_PASSWD }}
+        kubectl -n $KUBE_NAMESPACE delete --ignore-not-found=true secret registry-auth
+        kubectl -n $KUBE_NAMESPACE create secret docker-registry registry-auth --docker-server=${{ secrets.DOCKER_REGISTRY }} --docker-username=${{ secrets.DOCKER_UNAME }} --docker-password=${{ secrets.DOCKER_PASSWD }}
         
         echo "Deploying latest image"
-        kubectl -n tk8web get pods -l app=tk8web
+        kubectl -n $KUBE_NAMESPACE get pods -l app=$KUBE_LABEL
         
         echo "set deployment to latest Image $DOCKER_IMAGE_TAG"
-        kubectl -n tk8web set image deployment tk8web tk8web=$DOCKER_IMAGE_TAG
-        kubectl -n tk8web rollout status deployment tk8web
+        kubectl -n $KUBE_NAMESPACE set image deployment $KUBE_DEPLOYMENT $KUBE_CONTAINERNAME=$DOCKER_IMAGE_TAG
+        kubectl -n $KUBE_NAMESPACE rollout status deployment $KUBE_DEPLOYMENT
         
     - name: Cleanup kubeconfig
       run: |
