@@ -4,7 +4,7 @@ on: [push]
 
 env:
 
-  APPLICATION_NAME: ${{ echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' }}
+  APPLICATION_NAME: $(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
   REPO_NAME: ${{ github.repository_owner }}
   KUBE_CONFIG: "${{ secrets.KUBECONFIG }}"
 
