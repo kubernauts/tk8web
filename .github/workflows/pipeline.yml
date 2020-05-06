@@ -3,6 +3,7 @@ name: CICD
 on: [push]
 
 env:
+
   REPO_NAME: ${{ github.repository_owner }}
   KUBE_CONFIG: "${{ secrets.KUBECONFIG }}"
 
@@ -15,7 +16,11 @@ jobs:
     steps:
 
     - name: set env APPLICATION_NAME
-      run: echo ::set-env name=APPLICATION_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+      run: |
+        echo ::set-env name=APPLICATION_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+        echo ::set-env name=KUBE_NAMESPACE::$APPLICATION_NAME
+        echo ::set-env name=KUBE_DEPLOYMENT::$APPLICATION_NAME
+        echo ::set-env name=KUBE_LABEL::$APPLICATION_NAME
 
     - name: Checkout
       uses: actions/checkout@v1
