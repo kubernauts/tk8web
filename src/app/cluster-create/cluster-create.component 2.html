@@ -1,0 +1,192 @@
+<form (ngSubmit)="onSubmit()">
+  <fieldset>
+  <div class="form-group">
+    <label for="clusterName">Cluster Name</label>
+    <input type="text" class="form-control" id="clusterName" aria-describedby="clusterHelp" placeholder="Enter cluster name" required
+    [(ngModel)]="model.name" name="cluster-name">
+    <small id="clusterHelp" class="form-text text-muted">Enter the name for your cluster</small>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="cloudProvider">Cloud Provider</label>
+      <select [(ngModel)]="model.provisioner" class="form-control" id="cloudProvider" name="cluster-provisioner">
+        <option value="default">Select</option>
+        <option value="aws">AWS EC2</option>
+        <option value="eks">AWS EKS</option>
+        <option value="openstack">OpenStack</option>
+        <option value="barmetal">BareMetal</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="kubernetesInstaller">Kubernetes Installer</label>
+      <select [(ngModel)]="model.installer" class="form-control" id="kubernetesInstaller" name="cluster-installer">
+        <option value="default">Select</option>
+        <option value="tk8" selected>TK8</option>
+        <option value="rke" *ngIf="model.provisioner == 'aws'">Rancher Kubernetes Engine</option>
+      </select>
+    </div>
+  </div>
+  </fieldset>
+  <!-- AWS Config -->
+  <!--
+    ```yaml
+    aws:
+      aws_ssh_keypair: ""
+    ```
+   -->
+   <div class="form-row">
+  <div class="form-group col-md-6" *ngIf="model.provisioner == 'aws' || model.provisioner == 'eks'">
+      <label for="aws-access-key-id">AWS Access Key ID</label>
+      <input type="password" class="form-control" id="aws-access-key-id" aria-describedby="aws-access-key-id-help" placeholder="Enter access key id" required
+      [(ngModel)]="model.access.key" name="aws-access-key-id">
+      <small id="aws-access-key-id-help" class="form-text text-muted">Enter your AWS Access Key Id</small>
+    </div>
+    <div class="form-group col-md-6" *ngIf="model.provisioner == 'aws' || model.provisioner == 'eks'">
+      <label for="aws-access-secret-key">AWS Secret Access Key</label>
+      <input type="password" class="form-control" id="aws-access-secret-key" aria-describedby="aws-access-secret-key-help" placeholder="Enter secret access key" required
+      [(ngModel)]="model.access.secret" name="aws-access-secret-key">
+      <small id="aws-access-secret-key-help" class="form-text text-muted">Enter your AWS Secret Access Key</small>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.provisioner == 'aws' || model.provisioner == 'eks'" >
+      <label for="aws-region">AWS Region</label>
+      <select [(ngModel)]="model.region" class="form-control" id="awsRegion" name="aws-region" aria-describedby="aws-region-help">
+        <option value="default">Select</option>
+        <option value="us-east-1">US East (N. Virginia)</option>
+        <option value="us-east-2">US East (Ohio)</option>
+        <option value="us-west-1">US West (N. California)</option>
+        <option value="us-west-2">US West (Oregon)</option>
+        <option value="ap-south-1">Asia Pacific (Mumbai)</option>
+        <option value="ap-northeast-2">Asia Pacific (Seoul)</option>
+        <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
+        <option value="ap-southeast-2">Asia Pacific (Sydney)</option>
+        <option value="ap-northeast-1">Asia Pacific (Tokyo)</option>
+        <option value="ca-central-1">Canada (Central)</option>
+        <option value="eu-central-1">EU (Frankfurt)</option>
+        <option value="eu-west-1">EU (Ireland)</option>
+        <option value="eu-west-2">EU (London)</option>
+        <option value="eu-west-3">EU (Paris)</option>
+        <option value="sa-east-1">South America (São Paulo)</option>
+      </select>
+      <small id="aws-region-help" class="form-text text-muted">Select your AWS region</small>
+    </div>
+   <fieldset>
+  <div class="form-group" *ngIf="model.provisioner == 'aws'">
+    <label for="instance-os">Instance OS</label>
+    <select [(ngModel)]="model.os" class="form-control" id="instance-os" name="instance-os">
+        <option value="default">Select</option>
+        <option value="ubuntu">Ubuntu</option>
+        <option value="centos">CentOS</option>
+        <option value="coreos">CoreOS</option>
+      </select>
+  </div>
+  <div class="form-row" *ngIf="model.provisioner == 'aws' && model.installer != 'rke'">
+    <div class="form-group col-md-4">
+      <label for="cloudProvider">Master count</label>
+      <input type="text" [(ngModel)]="model.master.count" name="master-count" class="form-control" value="1" >
+    </div>
+    <div class="form-group col-md-8">
+      <label for="cloudProvider">Master size</label>
+      <select [(ngModel)]="model.master.size" class="form-control" id="kubernetesInstaller" name="cluster-installer">
+          <option value="default">Select</option>
+          <option *ngFor="let type of awsInstanceTypes" value="{{type}}">{{type}}</option>
+        </select>
+    </div>
+  </div>
+  <div class="form-row" *ngIf="model.provisioner == 'aws' && model.installer != 'rke'">
+    <div class="form-group col-md-4">
+      <label for="cloudProvider">ETCD count</label>
+      <input type="text" [(ngModel)]="model.etcd.count" name="master-count" class="form-control" value="1" >
+    </div>
+    <div class="form-group col-md-8">
+      <label for="cloudProvider">ETCD size</label>
+      <select [(ngModel)]="model.etcd.size" class="form-control" id="kubernetesInstaller" name="cluster-installer">
+        <option value="default">Select</option>
+        <option *ngFor="let type of awsInstanceTypes" value="{{type}}">{{type}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row" *ngIf="model.provisioner == 'aws' || model.provisioner == 'eks'">
+    <div class="form-group col-md-4">
+      <label for="cloudProvider">Node count</label>
+      <input type="text" [(ngModel)]="model.node.count" name="node-count" class="form-control" value="1" >
+    </div>
+    <div class="form-group col-md-8">
+      <label for="cloudProvider">Node size</label>
+      <select [(ngModel)]="model.node.size" class="form-control" id="kubernetesInstaller" name="cluster-installer">
+        <option value="default">Select</option>
+        <option *ngFor="let type of awsInstanceTypes" value="{{type}}">{{type}}</option>
+      </select>
+    </div>
+  </div>
+</fieldset>
+  <div class="form-group">
+    <div class="form-check" *ngIf="model.provisioner == 'aws'">
+      <input class="form-check-input" type="checkbox" [checked]="networkSetting" (change)="networkSetting = !networkSetting" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
+      Enable Network Config
+      </label>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.provisioner == 'aws' && networkSetting">
+    <label for="vpc-cidr-block">VPC CIDR Block</label>
+    <input type="text" class="form-control" id="vpc-cidr-block" aria-describedby="vpc-cidr-block-help"
+    [(ngModel)]="model.cidr" name="vpc-cidr-block">
+    <small id="vpc-cidr-block-help" class="form-text text-muted">Enter your CIDR Block 10.250.192.0/18 </small>
+  </div>
+  <div class="form-group" *ngIf="model.provisioner == 'aws' && networkSetting">
+    <label for="subnet-private">Private Subnet</label>
+    <input type="text" class="form-control" id="subnet-private" aria-describedby="subnet-private-help"
+    [(ngModel)]="model.subnetPrivate" name="subnet-private">
+    <small id="subnet-private-help" class="form-text text-muted">Enter your private subnet ["10.250.192.0/20","10.250.208.0/20"]</small>
+  </div>
+  <div class="form-group" *ngIf="model.provisioner == 'aws' && networkSetting">
+    <label for="subnet-public">Public Subnet</label>
+    <input type="text" class="form-control" id="subnet-public" aria-describedby="subnet-public-help"
+    [(ngModel)]="model.subnetPublic" name="subnet-public">
+    <small id="subnet-public-help" class="form-text text-muted">Enter your public subnet ["10.250.224.0/20","10.250.240.0/20"]</small>
+  </div>
+  <div class="form-group" *ngIf="model.provisioner == 'aws' && model.installer != 'rke'">
+  <div class="form-check" *ngIf="model.provisioner == 'aws'">
+    <input class="form-check-input" type="checkbox" [checked]="model.generateKeyPair" (change)="model.generateKeyPair = !model.generateKeyPair" id="keyPairGenerator">
+    <label class="form-check-label" for="keyPairGenerator">
+    Generate KeyPair
+    </label>
+  </div>
+  </div>
+  <div class="form-group" *ngIf="model.provisioner == 'aws' && model.installer != 'rke' && !model.generateKeyPair ">
+    <label for="cloudProvider">or KeyPair name</label>
+    <input type="text" [(ngModel)]="model.keyPairName" name="master-count" class="form-control" value="1" >
+  </div>
+
+  <!-- End AWS Config -->
+
+
+  <!-- EKS Config -->
+  <!--
+    ```yaml
+    eks:
+      autoscalling-max-size: 2
+      autoscalling-min-size: 1
+      key-file-path: "~/.ssh/id_rsa.pub"
+    ```
+   -->
+  <!-- End EKS Config -->
+
+
+  <!-- RKE Config -->
+  <!--
+    ```yaml
+    rke:
+      authorization: "rbac"
+    ```
+   -->
+  <!-- End RKE Config -->
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<p>
+  {{ diagnostic }}
+</p>
+
