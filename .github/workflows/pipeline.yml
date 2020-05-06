@@ -5,7 +5,7 @@ on: [push]
 env:
 
   APPLICATION_NAME: tk8web
-  REPO_NAME: kubernauts
+  REPO_NAME: ${{ github.repository_owner }}
   KUBE_CONFIG: "${{ secrets.KUBECONFIG }}"
 
 jobs:
