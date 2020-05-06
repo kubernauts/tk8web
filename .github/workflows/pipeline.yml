@@ -18,10 +18,10 @@ jobs:
     - name: set env APPLICATION_NAME
       run: |
         echo ::set-env name=APPLICATION_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
-        echo ::set-env name=KUBE_NAMESPACE::$(echo $APPLICATION_NAME)
-        echo ::set-env name=KUBE_DEPLOYMENT::$(echo $APPLICATION_NAME)
-        echo ::set-env name=KUBE_LABEL::$(echo $APPLICATION_NAME)
-        echo ::set-env name=KUBE_CONTAINERNAME::$(echo $APPLICATION_NAME)
+        echo ::set-env name=KUBE_NAMESPACE::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+        echo ::set-env name=KUBE_DEPLOYMENT::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+        echo ::set-env name=KUBE_LABEL::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+        echo ::set-env name=KUBE_CONTAINERNAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
 
     - name: Checkout
       uses: actions/checkout@v1
