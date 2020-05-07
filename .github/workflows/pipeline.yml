@@ -3,28 +3,23 @@ name: CICD
 on: [push]
 
 env:
-
-  REPO_NAME: ${{ github.repository_owner }}
   KUBE_CONFIG: "${{ secrets.KUBECONFIG }}"
 
 jobs:
-
   pipeline:
-    
+    name: build and kubernetes deployment
     runs-on: ubuntu-18.04
-    
-    steps:
 
-    - name: set env APPLICATION_NAME
+    steps:
+    - name: set calculated enviroment variables
       run: |
-        echo ::set-env name=APPLICATION_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
         echo ::set-env name=KUBE_NAMESPACE::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
         echo ::set-env name=KUBE_DEPLOYMENT::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
         echo ::set-env name=KUBE_LABEL::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
         echo ::set-env name=KUBE_CONTAINERNAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
 
-    - name: Checkout
-      uses: actions/checkout@v1
+    - name: Check out repository code
+      uses: actions/checkout@v2
 
     - name: setup Node.js 10 env
       uses: actions/setup-node@v1
@@ -40,14 +35,14 @@ jobs:
         CI: true
 
     - name: Build docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_REGISTRY }}/$REPO_NAME/$APPLICATION_NAME:latest
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_REGISTRY }}/${{ github.repository }}:latest
     
     - name: Log into private registry
       run: echo "${{ secrets.DOCKER_PASSWD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u ${{ secrets.DOCKER_UNAME }} --password-stdin
-
-    - name: Push image
+      
+    - name: Push image to private registry and tag
       run: |
-        IMAGE_NAME=${{ secrets.DOCKER_REGISTRY }}/$REPO_NAME/$APPLICATION_NAME
+        IMAGE_NAME=${{ secrets.DOCKER_REGISTRY }}/${{ github.repository }}
         VERSION=$(echo $GITHUB_SHA | cut -c 1-6)
         echo VERSION=$VERSION
         echo ::set-env name=DOCKER_IMAGE_TAG::$(echo $IMAGE_NAME:$VERSION) 
@@ -56,12 +51,12 @@ jobs:
         docker push $IMAGE_NAME:$VERSION
         docker push $IMAGE_NAME:latest
 
-    - name: Configure kubeconfig
+    - name: Configure kubeconfig job node
       run: |
         mkdir -p ~/.kube
         echo $KUBE_CONFIG | base64 -d > ~/.kube/config
-        
-    - name: Deploy latest image
+
+    - name: Rollout latest image to kubernetes
       run: |
         echo "kubectl validation"
         kubectl cluster-info
@@ -78,10 +73,11 @@ jobs:
         kubectl -n $KUBE_NAMESPACE rollout status deployment $KUBE_DEPLOYMENT
         
     - name: Cleanup kubeconfig
+      if: ${{ always() }}
       run: |
         rm -f ~/.kube/config
-        
-    - name: Slack
+      
+    - name: slack hook
       uses: rtCamp/action-slack-notify@master
       env:
         SLACK_CHANNEL: alerts
